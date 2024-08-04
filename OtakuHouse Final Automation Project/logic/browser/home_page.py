@@ -1,0 +1,64 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from infra.browser.base_page import BasePage
+
+
+class HomePage(BasePage):
+    LOGIN_BUTTON = '//a[@data-rb-event-key="#/login"]'
+    CART_BUTTON_HOME_PAGE = '//a[@data-rb-event-key="#/cart"]'
+    SEARCH_SUBMIT_BUTTON = '//button[@type="submit"]'
+    SEARCH_INPUT_BAR = '//input[@name="q"]'
+    CART_PAGE_BUTTON = '//a[@data-rb-event-key="#/cart"]'
+    ITEMS_FROM_HOME_PAGE = '//div[@class="card-title"]//strong'
+
+    def __init__(self, driver):
+        super().__init__(driver)
+
+    def click_login_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.LOGIN_BUTTON)))
+        element.click()
+
+    def click_cart_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.CART_BUTTON_HOME_PAGE)))
+        element.click()
+
+    def insert_search_query_input(self, query):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.SEARCH_INPUT_BAR)))
+        element.clear()
+        element.send_keys(query)
+
+    def click_submit_search_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.SEARCH_SUBMIT_BUTTON)))
+        element.click()
+
+    def click_cart_page_button(self):
+        element = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.CART_PAGE_BUTTON))
+        )
+        element.click()
+
+    def click_random_home_page_item(self, index):
+        elements = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_all_elements_located((By.XPATH, self.ITEMS_FROM_HOME_PAGE))
+        )
+        element = elements[index]
+        self.scroll_to_element(element)
+        element_text = element.text
+        element.click()
+        return element_text
+
+    def get_random_home_page_item_name(self, index):
+        elements = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_all_elements_located((By.XPATH, self.ITEMS_FROM_HOME_PAGE))
+        )
+        self.scroll_to_element(elements[index])
+        return elements[index].text
+
+    def search_flow(self, query):
+        self.insert_search_query_input(query)
+        self.click_submit_search_button()
