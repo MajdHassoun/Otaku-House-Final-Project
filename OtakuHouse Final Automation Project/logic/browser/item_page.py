@@ -15,6 +15,7 @@ class ItemPage(BasePage):
     RATING_DROPBOX_PICK = '//select[@id="rating"]'
     REVIEW_INPUT = '//textarea[@id="comment"]'
     SUBMIT_REVIEW_BUTTON = '//button[text()="Submit"]'
+    USER_ITEM_REVIEW = '//div[@class="list-group-item"]//strong[text() = "majd2"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -75,3 +76,9 @@ class ItemPage(BasePage):
         )
         self.scroll_to_element(element)
         element.click()
+
+    def is_item_reviews_displayed(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.USER_ITEM_REVIEW))
+        )
+        return element.is_displayed()

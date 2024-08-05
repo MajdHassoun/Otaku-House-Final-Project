@@ -26,5 +26,5 @@ class UserDetails:
         """
         return {
             "username": self.username,
-            "user_id": self.user_id
+            "rating": self.user_id
         }

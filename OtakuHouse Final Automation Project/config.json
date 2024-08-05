@@ -1,11 +1,12 @@
 {
   "url": "http://127.0.0.1:8000/",
   "browser": "Chrome",
-  "email": "majdnotability@gmail.com",
+  "email": "majd2@gmail.com",
   "password": "finalproject3",
   "invalid_password": "123",
   "headers": {
-    "Cookie": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MTA5NDU3LCJqdGkiOiJjNWM4YjMxOTlhZDg0Yzk3ODRmOTFkZjFmZTkzM2MyNCIsInVzZXJfaWQiOjl9.UMqGMDMoCTju8ya71f1N5BqWPNktEHkjNi-wG2GuSNs",
-    "authorization": "csrftoken=19HhIwsSXtIVP9ijXiDMMSuPIGDZKs3NlGNHrgDUXrb18L8TxkKjgPWNs18dxmIL"
-  }
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1NDM2NDI4LCJqdGkiOiI0NmUzZjU3MmE5M2U0YzYxOGYwMjE4MWE2ZGZjNjg5YyIsInVzZXJfaWQiOjExfQ.ydnGGSOQJT62bnF0-fCkBEE-gx04zBsTdS62V6cEktU",
+    "Cookie": "csrftoken=19HhIwsSXtIVP9ijXiDMMSuPIGDZKs3NlGNHrgDUXrb18L8TxkKjgPWNs18dxmIL"
+  },
+  "string_len": 8
 }
