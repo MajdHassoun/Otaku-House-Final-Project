@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import Select
 class ItemPage(BasePage):
     ADD_TO_CART_BUTTON = '//button[text() = "Add to Cart"]'
     REVIEWS_COUNTER = '//span[contains(text(),"reviews")]'
-    ITEM_DESCRIPTION = '//div[contains(text(),"Description:")]'
+    ITEM_SUMMARY = '//div[contains(text(),"Description:")]'
     ITEM_PRICE = '//div[contains(text(),"Price: ₹")]'
     ITEM_STATUS = '//div[@class="list-group-item"]//div[@class="row"]'
     QUANTITY_DROPBOX_BUTTON = '//div[@class="my-1 col-auto"]//select[@class="form-control"]//option[@value]'
@@ -16,6 +16,7 @@ class ItemPage(BasePage):
     REVIEW_INPUT = '//textarea[@id="comment"]'
     SUBMIT_REVIEW_BUTTON = '//button[text()="Submit"]'
     USER_ITEM_REVIEW = '//div[@class="list-group-item"]//strong[text() = "majd2"]'
+    SELECT_RATING_MESSAGE = '//div[text() ="Please Select a rating"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -32,9 +33,9 @@ class ItemPage(BasePage):
         )
         return element.is_displayed()
 
-    def is_item_description_displayed(self):
+    def is_item_summary_displayed(self):
         element = WebDriverWait(self._driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, self.ITEM_DESCRIPTION))
+            EC.presence_of_element_located((By.XPATH, self.ITEM_SUMMARY))
         )
         return element.is_displayed()
 
@@ -80,5 +81,11 @@ class ItemPage(BasePage):
     def is_item_reviews_displayed(self):
         element = WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.USER_ITEM_REVIEW))
+        )
+        return element.is_displayed()
+
+    def is_select_rating_message_displayed(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.SELECT_RATING_MESSAGE))
         )
         return element.is_displayed()

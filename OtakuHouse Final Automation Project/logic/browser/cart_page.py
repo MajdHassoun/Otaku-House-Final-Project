@@ -9,6 +9,7 @@ class CartPage(BasePage):
     PROCEED_TO_CHECK_IN_BUTTON = '//button[text()="Proceed To Checkout"]'
     REMOVE_ITEM_BUTTON = '//button[@class="btn btn-light"]'
     ITEM_QUANTITY = '//select[@class="form-control"]//option[@value]'
+    CART_EMPTY_MESSAGE = '//div[@role="alert"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -35,3 +36,10 @@ class CartPage(BasePage):
         )
         element = elements[random-1]
         return element.text
+
+    def is_cart_empty_message_displayed(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.CART_EMPTY_MESSAGE))
+        )
+        return element.is_displayed()
+
