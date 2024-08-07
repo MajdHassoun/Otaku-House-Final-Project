@@ -1,5 +1,6 @@
 {
   "url": "http://127.0.0.1:8000/",
+  "item_page_url" : "http://127.0.0.1:8000/#/product/",
   "browser": "Chrome",
   "email": "majd2@gmail.com",
   "password": "finalproject3",
@@ -13,5 +14,16 @@
   "api_body_product_name" : "Attack On Titan - Eren Yeager Figure",
   "api_item_page_details_id" : 12,
   "api_item_page_details_brand": "Attack on Titan",
-  "api_item_page_details_price": "2999.00"
+  "api_item_page_details_price": "2999.00",
+  "second_page_url" : "http://127.0.0.1:8000/#/?keyword=&page=2",
+  "card_number" : 4000000000001000 ,
+  "card_date" : 1126,
+  "card_cvv": 901,
+  "zip_code" : 30056,
+  "phone_number": 559786092,
+  "fake_email" : "hi@gmail.com",
+  "costumer_name" : "majd",
+  "family_name": "hassoun",
+  "street": "hifa",
+  "city" : "hifa"
 }

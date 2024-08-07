@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.browser.base_page import BasePage
-from selenium.webdriver.support.ui import Select
 
 
 class ItemPage(BasePage):
@@ -17,6 +16,7 @@ class ItemPage(BasePage):
     SUBMIT_REVIEW_BUTTON = '//button[text()="Submit"]'
     USER_ITEM_REVIEW = '//div[@class="list-group-item"]//strong[text() = "majd2"]'
     SELECT_RATING_MESSAGE = '//div[text() ="Please Select a rating"]'
+    GO_BACK_BUTTON = '//a[text()="Go Back"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -89,3 +89,9 @@ class ItemPage(BasePage):
             EC.presence_of_element_located((By.XPATH, self.SELECT_RATING_MESSAGE))
         )
         return element.is_displayed()
+
+    def click_go_back_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.GO_BACK_BUTTON))
+        )
+        element.click()

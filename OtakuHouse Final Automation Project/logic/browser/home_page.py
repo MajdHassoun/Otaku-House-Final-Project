@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,6 +13,10 @@ class HomePage(BasePage):
     SEARCH_INPUT_BAR = '//input[@name="q"]'
     CART_PAGE_BUTTON = '//a[@data-rb-event-key="#/cart"]'
     ITEMS_FROM_HOME_PAGE = '//div[@class="card-title"]//strong'
+    PAGE_2_BUTTON = '//a[text() ="2"]'
+    CARROUSEL_NEXT_BUTTON = '//span[@class="carousel-control-next-icon"]'
+    ACTIVE_CARROUSEL_ITEM = '//div[@class ="active carousel-item"]'
+    CARROUSEL_ITEMS = '//div[@class="carousel-item"]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -58,6 +64,36 @@ class HomePage(BasePage):
         )
         self.scroll_to_element(elements[index])
         return elements[index].text
+
+    def click_second_page_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.PAGE_2_BUTTON)))
+        self.scroll_to_element(element)
+        element.click()
+
+    def click_carrousel_next_button(self):
+        element = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.CARROUSEL_NEXT_BUTTON))
+        )
+        element.click()
+
+    def click_carrousel_dynamic_item(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.ACTIVE_CARROUSEL_ITEM)))
+        time.sleep(0.5)
+        element.click()
+
+    def is_carrousel_dynamic_item_displayed(self):
+        element = WebDriverWait(self._driver, 15).until(
+            EC.visibility_of_element_located((By.XPATH, self.ACTIVE_CARROUSEL_ITEM))
+        )
+        return element.is_displayed()
+
+    def get_carrousel_items_number(self):
+        elements = WebDriverWait(self._driver, 15).until(
+            EC.presence_of_all_elements_located((By.XPATH, self.CARROUSEL_ITEMS))
+        )
+        return len(elements)
 
     def search_flow(self, query):
         self.insert_search_query_input(query)

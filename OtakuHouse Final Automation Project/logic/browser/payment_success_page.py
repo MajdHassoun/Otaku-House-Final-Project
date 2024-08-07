@@ -11,9 +11,8 @@ class PaymentSuccessPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-
-def is_payment_success_message_displayed(self):
-    element = WebDriverWait(self._driver, 15).until(
-        EC.visibility_of_element_located((By.XPATH, self.PAYMENT_SUCCESS_MESSAGE))
-    )
-    return element.is_displayed()
+    def is_payment_success_message_displayed(self):
+        element = WebDriverWait(self._driver, 25).until(
+            EC.visibility_of_element_located((By.XPATH, self.PAYMENT_SUCCESS_MESSAGE))
+        )
+        return element.is_displayed()
