@@ -61,5 +61,6 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
                                                          self.street,
                                                          self.city, self.zipcode, self.phone,
                                                          self.email)
+        self.order_summary_page.click_pay_now_button()
         # Assert
         self.assertTrue(self.payment_success_page.is_payment_success_message_displayed())

@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -6,7 +8,7 @@ from infra.browser.base_page import BasePage
 
 
 class PaymentSuccessPage(BasePage):
-    PAYMENT_SUCCESS_MESSAGE = '//div[@class="fade alert alert-success show"]'
+    PAYMENT_SUCCESS_MESSAGE = '//div[contains(text(), "Paid on")]'
 
     def __init__(self, driver):
         super().__init__(driver)
