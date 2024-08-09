@@ -13,7 +13,7 @@ class ItemPage(BasePage):
     QUANTITY_DROPBOX_BUTTON = '//div[@class="my-1 col-auto"]//select[@class="form-control"]//option[@value]'
     RATING_DROPBOX_PICK = '//select[@id="rating"]'
     REVIEW_INPUT = '//textarea[@id="comment"]'
-    SUBMIT_REVIEW_BUTTON = '//button[text()="Submit"]'
+    SUBMIT_REVIEW_BUTTON = '//div[@class="list-group-item"]//button[@type="submit"]'
     USER_ITEM_REVIEW = '//div[@class="list-group-item"]//strong[text() = "majd2"]'
     SELECT_RATING_MESSAGE = '//div[text() ="Please Select a rating"]'
     GO_BACK_BUTTON = '//a[text()="Go Back"]'
@@ -75,7 +75,7 @@ class ItemPage(BasePage):
         element = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SUBMIT_REVIEW_BUTTON))
         )
-        self.scroll_to_element(element)
+        # self.scroll_to_element(element)
         element.click()
 
     def is_item_reviews_displayed(self):

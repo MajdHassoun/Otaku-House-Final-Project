@@ -16,24 +16,28 @@ class UiCheckItemPageDetailsTest(unittest.TestCase):
         self.item_page = ItemPage(self.driver)
 
     def test_item_page_price(self):
+        """ checks if item price is displayed"""
         # Act
         self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         # Assert
         self.assertTrue(self.item_page.is_item_price_displayed())
 
     def test_item_page_summary(self):
+        """ checks if item summary is displayed"""
         # Act
         self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         # Assert
         self.assertTrue(self.item_page.is_item_summary_displayed())
 
     def test_item_page_status(self):
+        """ checks if item status is displayed"""
         # Act
         self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         # Assert
         self.assertTrue(self.item_page.is_item_status_displayed())
 
     def test_item_page_reviews_counter(self):
+        """ checks if item reviews counter is displayed"""
         # Act
         self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         # Assert

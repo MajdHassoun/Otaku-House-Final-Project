@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,7 +7,6 @@ from infra.browser.base_page import BasePage
 
 class OrderSummaryPage(BasePage):
     IFRAME = '//iframe[@allowtransparency="true"]'
-    # IFRAME2 = 'title="paypal_card_form"'
     CREDIT_CARD_BUTTON = '//div[@aria-label="כרטיס אשראי"]'
     CARD_NUMBER = '//input[@id="credit-card-number"]'
     CARD_DATE = '//input[@id="expiry-date"]'
@@ -32,16 +30,9 @@ class OrderSummaryPage(BasePage):
         )
         self._driver.switch_to.frame(iframe_element)
 
-    # def switch_to_iframe2(self):
-    #     # Wait for the iframe to be present and switch to it
-    #     iframe_element = WebDriverWait(self._driver, 10).until(
-    #         EC.visibility_of_element_located((By.XPATH, self.IFRAME2))
-    #     )
-    #     self._driver.switch_to.frame(iframe_element)
-    #
-    # def switch_to_default_content(self):
-    #     # Switch back to the default content
-    #     self._driver.switch_to.default_content()
+    def switch_to_default_content(self):
+        # Switch back to the default content
+        self._driver.switch_to.default_content()
 
     def click_credit_card_button(self):
         self.switch_to_iframe()
@@ -130,6 +121,7 @@ class OrderSummaryPage(BasePage):
         time.sleep(3)
         self.scroll_to_element(pay_now_button)
         pay_now_button.click()
+        self.switch_to_default_content()
 
     def insert_card_details_flow(self, card_number, date, cvv, name, family, street_name, city, zipcode, phone, email):
         self.enter_card_number(card_number)

@@ -1,7 +1,9 @@
 import unittest
+from infra.api.api_wrapper import APIWrapper
 from infra.browser.browser_wrapper import BrowserWrapper
 from infra.config_provider import ConfigProvider
 from infra.utils_infra import UtilsInfra
+from logic.api.api_item_page_details import ApiItemPageDetails
 from logic.browser.cart_page import CartPage
 from logic.browser.home_page import HomePage
 from logic.browser.item_page import ItemPage
@@ -11,6 +13,7 @@ from logic.browser.payment_method_page import PaymentMethodPage
 from logic.browser.payment_success_page import PaymentSuccessPage
 from logic.browser.shipping_details_page import ShippingDetailsPage
 from logic.browser.sign_in_page import SignInPage
+from logic.browser.user_profile_page import UserProfilePage
 
 
 class EndToEndPurchaseProcessTest(unittest.TestCase):
@@ -19,6 +22,8 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
         self.browser = BrowserWrapper()
         self.config = ConfigProvider.load_config_json()
         self.driver = self.browser.get_driver(self.config["url"])
+        self.api_request = APIWrapper()
+        self.item_page_details = ApiItemPageDetails(self.api_request)
         self.home_page = HomePage(self.driver)
         self.item_page = ItemPage(self.driver)
         self.cart_page = CartPage(self.driver)
@@ -28,6 +33,7 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
         self.order_summary_page = OrderSummaryPage(self.driver)
         self.payment_success_page = PaymentSuccessPage(self.driver)
         self.signin_page = SignInPage(self.driver)
+        self.user_profile_page = UserProfilePage(self.driver)
         self.card_number = self.config["card_number"]
         self.card_date = self.config["card_date"]
         self.card_cvv = self.config["card_cvv"]
@@ -42,8 +48,10 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
         self.signin_page.sign_in_flow(self.config["email"], self.config["password"])
 
     def test_end_to_end_purchase(self):
+        """ This test checks the end-to-end process of ordering and buying an item"""
         # Arrange
-        self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
+        random_item_number = UtilsInfra.pick_random_number_url()
+        self.home_page.click_random_home_page_item(UtilsInfra.from_item_num_to_home_page_num(random_item_number))
         self.item_page.click_add_to_cart_button()
         self.cart_page.click_proceed_to_check_in_button()
         self.shipping_details_page.fill_shipping_data_flow(UtilsInfra.generate_random_string(5),
@@ -62,5 +70,6 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
                                                          self.city, self.zipcode, self.phone,
                                                          self.email)
         self.order_summary_page.click_pay_now_button()
+
         # Assert
         self.assertTrue(self.payment_success_page.is_payment_success_message_displayed())

@@ -9,7 +9,7 @@ class SignInPage(BasePage):
     EMAIL_INPUT = '//input[@placeholder="Enter Email"]'
     PASSWORD_INPUT = '//input[@placeholder="Enter Password"]'
     SUBMIT_SIGNIN_BUTTON = '//button[text()="Sign In"]'
-    USERNAME_LOGGED_IN = '//a[text()="majd"]'
+    USERNAME_LOGGED_IN = '//a[@id="username"]'
     INVALID_LOGIN_MESSAGE = '//div[text()="No active account found with the given credentials"]'
 
     def __init__(self, driver):
@@ -36,6 +36,7 @@ class SignInPage(BasePage):
         element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.USERNAME_LOGGED_IN))
         )
+
         return element.is_displayed()
 
     def is_invalid_message_displayed(self):

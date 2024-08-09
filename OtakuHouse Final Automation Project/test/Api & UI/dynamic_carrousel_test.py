@@ -21,6 +21,7 @@ class DynamicCarrouselTest(unittest.TestCase):
         self.browser.close_browser()
 
     def test_dynamic_carrousel_item_change(self):
+        """ checks if carrousel changing items is working"""
         # Arrange
         items_number = self.home_page.get_carrousel_items_number()
         for i in range(items_number + 1):
@@ -30,6 +31,7 @@ class DynamicCarrouselTest(unittest.TestCase):
             self.assertTrue(self.home_page.is_carrousel_dynamic_item_displayed())
 
     def test_carrousel_item_click(self):
+        """ Checks if the carrousel items navigate to the correct pages"""
         # Arrange
         self.carrousel_items = ApiCarrouselItems(self.api_request)
         self.item_page = ItemPage(self.driver)

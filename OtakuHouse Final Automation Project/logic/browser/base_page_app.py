@@ -6,10 +6,12 @@ from infra.browser.base_page import BasePage
 
 
 class BasePageApp(BasePage):
-    # HEADER_HOME_BUTTON = '//a[@class="active navbar-brand"]'
+    HEADER_HOME_BUTTON = '//a[@class="active navbar-brand"]'
     SEARCH_SUBMIT_BUTTON = '//button[@type="submit"]'
     SEARCH_INPUT_BAR = '//input[@name="q"]'
     CART_PAGE_BUTTON = '//a[@data-rb-event-key="#/cart"]'
+    USER_OPTIONS_MENU = '//a[@id="username"]'
+    PROFILE_MENU_OPTION_BUTTON = '//a[text()="Profile"]'
 
     def __init__(self, diver):
         super().__init__(diver)
@@ -19,6 +21,12 @@ class BasePageApp(BasePage):
             EC.presence_of_element_located((By.XPATH, self.SEARCH_INPUT_BAR)))
         element.clear()
         element.send_keys(query)
+
+    def click_header_home_button(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.HEADER_HOME_BUTTON)))
+        self.scroll_to_element(element)
+        element.click()
 
     def click_submit_search_button(self):
         element = WebDriverWait(self._driver, 10).until(
@@ -30,6 +38,23 @@ class BasePageApp(BasePage):
             EC.visibility_of_element_located((By.XPATH, self.CART_PAGE_BUTTON))
         )
         element.click()
+
+    def click_user_options_menu(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, self.USER_OPTIONS_MENU))
+        )
+        self.scroll_to_element(element)
+        element.click()
+
+    def click_profile_option(self):
+        element = WebDriverWait(self._driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, self.PROFILE_MENU_OPTION_BUTTON))
+        )
+        element.click()
+
+    def navigate_to_user_profile(self):
+        self.click_user_options_menu()
+        self.click_profile_option()
 
     def search_flow(self, query):
         self.insert_search_query_input(query)

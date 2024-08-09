@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -93,7 +92,10 @@ class HomePage(BasePage):
         elements = WebDriverWait(self._driver, 15).until(
             EC.presence_of_all_elements_located((By.XPATH, self.CARROUSEL_ITEMS))
         )
-        return len(elements)
+        if len(elements) == 0:
+            return 1
+        else:
+            return len(elements)
 
     def search_flow(self, query):
         self.insert_search_query_input(query)

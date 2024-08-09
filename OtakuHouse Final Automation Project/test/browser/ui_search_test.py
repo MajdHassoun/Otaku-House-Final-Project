@@ -15,6 +15,7 @@ class UiSearchTest(unittest.TestCase):
         self.result_page = SearchResultPage(self.driver)
 
     def test_search_for_item(self):
+        """ checks search functionality with UI"""
         # Arrange
         self.home_page.insert_search_query_input(self.config["search_query"])
         # Act
@@ -23,8 +24,9 @@ class UiSearchTest(unittest.TestCase):
         self.assertIn(self.config["search_query"], self.result_page.get_result_title())
 
     def test_negative_search_for_item(self):
+        """ checks negative search functionality with UI"""
         # Arrange
-        self.home_page.insert_search_query_input(UtilsInfra.generate_random_string(self.config["string_len"]))
+        self.home_page.insert_search_query_input(UtilsInfra.generate_random_string(5))
         # Act
         self.home_page.click_submit_search_button()
         # Assert

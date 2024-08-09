@@ -22,12 +22,14 @@ class TestLogin(unittest.TestCase):
         self.browser.close_browser()
 
     def test_valid_login(self):
+        """ checks valid login"""
         # Act
         self.sign_in_page.sign_in_flow(self.email, self.password)
         # Assert
         self.assertTrue(self.sign_in_page.is_username_displayed())
 
     def test_invalid_login(self):
+        """ checks log in with invalid password"""
         # Act
         self.sign_in_page.sign_in_flow(self.email, self.invalid_password)
         # Assert

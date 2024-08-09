@@ -10,7 +10,7 @@ class ApiItemPageDetails:
         self._request = request
         self.config = ConfigProvider.load_config_json()
 
-    def get_item_page_details(self):
+    def get_item_page_details(self, item_id):
         url = (
-            f'{self.config["url"]}{self.ENDPOINT}{self.config["api_item_page_details_id"]}{self.ENDPOINT_PT2}')
+            f'{self.config["url"]}{self.ENDPOINT}{item_id}{self.ENDPOINT_PT2}')
         return self._request.get_request(url, headers=self.config["headers"])

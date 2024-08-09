@@ -18,12 +18,14 @@ class PageNavigateTest(unittest.TestCase):
         self.browser.close_browser()
 
     def test_navigate_between_pages(self):
+        """ checks if page navigates correctly"""
         # Act
         self.home_page.click_second_page_button()
         # Assert
         self.assertEqual(self.driver.current_url, self.config["second_page_url"])
 
     def test_navigate_click_and_check_item_price(self):
+        """ checks if page navigates correctly and checks an item details(price) from the second page"""
         # Arrange
         self.home_page.click_second_page_button()
         # Act

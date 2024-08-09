@@ -24,7 +24,8 @@ class AddReviewTest(unittest.TestCase):
         self.signin_page.sign_in_flow(self.config["email"], self.config["password"])
 
     def test_add_review(self):
-        """ Adds a review to a random item"""
+        """ Adds a review to a random item by choosing an item with UI and adding a review with
+        a POST API call and finally checks it with UI"""
         # Arrange
         item_number_url = UtilsInfra.pick_random_number_url()
         item_number_home_page = UtilsInfra.from_item_num_to_home_page_num(item_number_url)
@@ -39,11 +40,11 @@ class AddReviewTest(unittest.TestCase):
         self.assertTrue(self.item_page.is_item_reviews_displayed())
 
     def test_negative_add_review_ui(self):
+        """ Negative test that adds a review without choosing a rating"""
         # Arrange
         self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         self.item_page.enter_review_text(UtilsInfra.generate_random_string(8))
         # Act
+        self.item_page.click_submit_review_button()
         # Assert
         self.assertTrue(self.item_page.is_select_rating_message_displayed())
-
-        self.item_page.click_submit_review_button()
