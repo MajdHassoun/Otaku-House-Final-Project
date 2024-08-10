@@ -2,12 +2,12 @@
   "url": "http://127.0.0.1:8000/",
   "item_page_url" : "http://127.0.0.1:8000/#/product/",
   "browser": "Chrome",
-  "email": "majd11@gmail.com",
+  "email": "majd22@gmail.com",
   "password": "finalproject3",
   "invalid_password": "123",
-  "user_name": "majd11",
+  "user_name": "majd22",
   "headers": {
-    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1ODkzNjY4LCJqdGkiOiJlZWQzODY4ZTBiYzM0MDFhYTViYmZhOTQxODVjMDcyMyIsInVzZXJfaWQiOjEyfQ.l9JqTPtISx-AmFqEiVwb6-LrQktZwkvX8q9stZ52FYI",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1OTExODM5LCJqdGkiOiJlYjU2NGVmYmU3NzI0ODk0YjhiZDNkZTJkNjkyZGRhOCIsInVzZXJfaWQiOjEzfQ.Su6mdGnM0VDBwL3DhSam_JIpdBgpoizBOmj7PQ3ncIY",
     "Cookie": "csrftoken=19HhIwsSXtIVP9ijXiDMMSuPIGDZKs3NlGNHrgDUXrb18L8TxkKjgPWNs18dxmIL"
   },
   "search_query" : "Eren",
