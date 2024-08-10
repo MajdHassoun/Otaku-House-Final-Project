@@ -13,7 +13,6 @@ from logic.browser.payment_method_page import PaymentMethodPage
 from logic.browser.payment_success_page import PaymentSuccessPage
 from logic.browser.shipping_details_page import ShippingDetailsPage
 from logic.browser.sign_in_page import SignInPage
-from logic.browser.user_profile_page import UserProfilePage
 
 
 class EndToEndPurchaseProcessTest(unittest.TestCase):
@@ -33,7 +32,6 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
         self.order_summary_page = OrderSummaryPage(self.driver)
         self.payment_success_page = PaymentSuccessPage(self.driver)
         self.signin_page = SignInPage(self.driver)
-        self.user_profile_page = UserProfilePage(self.driver)
         self.card_number = self.config["card_number"]
         self.card_date = self.config["card_date"]
         self.card_cvv = self.config["card_cvv"]

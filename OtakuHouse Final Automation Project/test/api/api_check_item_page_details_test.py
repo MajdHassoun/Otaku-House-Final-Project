@@ -20,5 +20,3 @@ class ApiCheckItemPageDetailsTest(unittest.TestCase):
         self.assertEqual(result.data["brand"], self.config["api_item_page_details_brand"])
         self.assertEqual(result.data["price"], self.config["api_item_page_details_price"])
         self.assertEqual(result.data["_id"], self.config["api_item_page_details_id"])
-
-

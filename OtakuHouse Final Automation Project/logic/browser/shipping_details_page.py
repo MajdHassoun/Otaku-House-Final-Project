@@ -15,6 +15,7 @@ class ShippingDetailsPage(BasePage):
         super().__init__(driver)
 
     def insert_address_data(self, data):
+        """ Waits for the element to be located and send keys to it"""
         element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.ADDRESS_INPUT_BAR))
         )
@@ -22,6 +23,7 @@ class ShippingDetailsPage(BasePage):
         element.send_keys(data)
 
     def insert_city_data(self, data):
+        """ Waits for the element to be located and send keys to it"""
         element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.CITY_INPUT_BAR))
         )
@@ -29,6 +31,7 @@ class ShippingDetailsPage(BasePage):
         element.send_keys(data)
 
     def insert_postal_code_data(self, data):
+        """ Waits for the element to be located and send keys to it"""
         element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.POSTAL_CODE_INPUT_BAR))
         )
@@ -36,6 +39,7 @@ class ShippingDetailsPage(BasePage):
         element.send_keys(data)
 
     def insert_country_data(self, data):
+        """ Waits for the element to be located and send keys to it"""
         element = WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.COUNTRY_INPUT_BAR))
         )
@@ -43,12 +47,14 @@ class ShippingDetailsPage(BasePage):
         element.send_keys(data)
 
     def click_continue_button(self):
+        """ Waits for the element to be clickable and clicks it"""
         element = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.CONTINUE_BUTTON))
         )
         element.click()
 
     def fill_shipping_data_flow(self, address, city, postal_code, country):
+        """ Preforms shipping data fill process"""
         self.insert_address_data(address)
         self.insert_city_data(city)
         self.insert_postal_code_data(postal_code)

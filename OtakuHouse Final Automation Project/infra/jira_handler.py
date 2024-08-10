@@ -14,6 +14,7 @@ class JiraHandler:
         )
 
     def create_issue(self, project_key, summary, description, issue_type="Bug"):
+        """ creates a Jira issue"""
         issue_dict = {
             'project': {'key': project_key},
             'summary': summary,

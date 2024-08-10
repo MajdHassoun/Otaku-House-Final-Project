@@ -11,11 +11,13 @@ class ApiSearch:
         self.config = ConfigProvider.load_config_json()
 
     def get_search(self, search_query, page_number):
+        """ Sends Api Get request to preform a search"""
         url = (
             f'{self.config["url"]}{self.ENDPOINT}{search_query}{self.ENDPOINT_PT2}{page_number}')
         return self._request.get_request(url, headers=self.config["headers"])
 
     def get_search_negative(self, search_query, page_number):
+        """ Sends Api Get request to preform an invalid search"""
         url = (
             f'{self.config["url"]}{self.ENDPOINT}{search_query}{self.ENDPOINT_PT2}{page_number}')
         return self._request.get_request(url, headers=self.config["headers"])

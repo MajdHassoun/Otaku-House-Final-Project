@@ -10,6 +10,7 @@ class BrowserWrapper:
         self.config = ConfigProvider().load_config_json()
 
     def get_driver(self, url):
+        """ Gets the browser and sets up the driver"""
         try:
             if self.config["browser"] == "Chrome":
                 self._driver = webdriver.Chrome()

@@ -6,6 +6,7 @@ from infra.browser.base_page import BasePage
 
 
 class OrderSummaryPage(BasePage):
+    """ Initialize the locators"""
     IFRAME = '//iframe[@allowtransparency="true"]'
     CREDIT_CARD_BUTTON = '//div[@aria-label="כרטיס אשראי"]'
     CARD_NUMBER = '//input[@id="credit-card-number"]'
@@ -35,6 +36,7 @@ class OrderSummaryPage(BasePage):
         self._driver.switch_to.default_content()
 
     def click_credit_card_button(self):
+        """ switches to iframe content, waits for the element and clicks it """
         self.switch_to_iframe()
 
         credit_card_button = WebDriverWait(self._driver, 20).until(
@@ -43,6 +45,7 @@ class OrderSummaryPage(BasePage):
         credit_card_button.click()
 
     def enter_card_number(self, card_number):
+        """ switches to iframe content, waits for the element and sends keys to it """
         self.switch_to_iframe()
 
         credit_card_button = WebDriverWait(self._driver, 20).until(
@@ -52,6 +55,7 @@ class OrderSummaryPage(BasePage):
         credit_card_button.send_keys(card_number)
 
     def enter_card_date(self, card_date):
+        """ switches to iframe content, waits for the element and sends keys to it """
         card_date_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.CARD_DATE))
         )
@@ -59,6 +63,7 @@ class OrderSummaryPage(BasePage):
         card_date_field.send_keys(card_date)
 
     def enter_card_cvv(self, card_cvv):
+        """ switches to iframe content, waits for the element and sends keys to it """
         card_cvv_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.CARD_CVV))
         )
@@ -66,6 +71,7 @@ class OrderSummaryPage(BasePage):
         card_cvv_field.send_keys(card_cvv)
 
     def enter_customer_name(self, name):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_name_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_NAME))
         )
@@ -73,6 +79,7 @@ class OrderSummaryPage(BasePage):
         customer_name_field.send_keys(name)
 
     def enter_customer_family(self, family):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_family_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_FAMILY))
         )
@@ -80,6 +87,7 @@ class OrderSummaryPage(BasePage):
         customer_family_field.send_keys(family)
 
     def enter_customer_street(self, street):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_street_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_STREET))
         )
@@ -87,6 +95,7 @@ class OrderSummaryPage(BasePage):
         customer_street_field.send_keys(street)
 
     def enter_customer_city(self, city):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_city_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_CITY))
         )
@@ -94,6 +103,7 @@ class OrderSummaryPage(BasePage):
         customer_city_field.send_keys(city)
 
     def enter_customer_zipcode(self, zipcode):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_zipcode_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_ZIPCODE))
         )
@@ -101,6 +111,7 @@ class OrderSummaryPage(BasePage):
         customer_zipcode_field.send_keys(zipcode)
 
     def enter_customer_phone(self, phone):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_phone_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_PHONE))
         )
@@ -108,6 +119,7 @@ class OrderSummaryPage(BasePage):
         customer_phone_field.send_keys(phone)
 
     def enter_customer_email(self, email):
+        """ switches to iframe content, waits for the element and sends keys to it """
         customer_email_field = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.COSTUMER_EMAIL))
         )
@@ -115,6 +127,8 @@ class OrderSummaryPage(BasePage):
         customer_email_field.send_keys(email)
 
     def click_pay_now_button(self):
+        """ switches to iframe content, waits for the element, scrolls to it, clicks it
+          and returns to default content"""
         pay_now_button = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.PAY_NOW_BUTTON))
         )
@@ -124,6 +138,7 @@ class OrderSummaryPage(BasePage):
         self.switch_to_default_content()
 
     def insert_card_details_flow(self, card_number, date, cvv, name, family, street_name, city, zipcode, phone, email):
+        """ preforms a card details insertion process"""
         self.enter_card_number(card_number)
         self.enter_card_date(date)
         self.enter_card_cvv(cvv)
