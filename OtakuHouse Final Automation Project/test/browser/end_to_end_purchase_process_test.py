@@ -50,8 +50,7 @@ class EndToEndPurchaseProcessTest(unittest.TestCase):
     def test_end_to_end_purchase(self):
         """ This test checks the end-to-end process of ordering and buying an item"""
         # Arrange
-        random_item_number = UtilsInfra.pick_random_number_url()
-        self.home_page.click_random_home_page_item(UtilsInfra.from_item_num_to_home_page_num(random_item_number))
+        self.home_page.click_random_home_page_item(UtilsInfra.pick_random_number_one_to_eight())
         self.item_page.click_add_to_cart_button()
         self.cart_page.click_proceed_to_check_in_button()
         self.shipping_details_page.fill_shipping_data_flow(UtilsInfra.generate_random_string(5),

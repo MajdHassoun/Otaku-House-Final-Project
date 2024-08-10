@@ -14,7 +14,7 @@ class ItemPage(BasePage):
     RATING_DROPBOX_PICK = '//select[@id="rating"]'
     REVIEW_INPUT = '//textarea[@id="comment"]'
     SUBMIT_REVIEW_BUTTON = '//div[@class="list-group-item"]//button[@type="submit"]'
-    USER_ITEM_REVIEW = '//div[@class="list-group-item"]//strong[text() = "majd2"]'
+    USER_ITEM_REVIEWS = '//div[@class="list-group-item"]//strong'
     SELECT_RATING_MESSAGE = '//div[text() ="Please Select a rating"]'
     GO_BACK_BUTTON = '//a[text()="Go Back"]'
 
@@ -78,11 +78,11 @@ class ItemPage(BasePage):
         # self.scroll_to_element(element)
         element.click()
 
-    def is_item_reviews_displayed(self):
-        element = WebDriverWait(self._driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, self.USER_ITEM_REVIEW))
+    def get_last_rating_user_name(self):
+        elements = WebDriverWait(self._driver, 10).until(
+            EC.presence_of_all_elements_located((By.XPATH, self.USER_ITEM_REVIEWS))
         )
-        return element.is_displayed()
+        return elements[-1].text
 
     def is_select_rating_message_displayed(self):
         element = WebDriverWait(self._driver, 10).until(

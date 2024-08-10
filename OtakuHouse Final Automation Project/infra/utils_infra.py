@@ -22,8 +22,8 @@ class UtilsInfra:
 
     @staticmethod
     def from_item_num_to_home_page_num(number):
-        return 27 - number
-    # 26=1 , 25=2, 24=3, 23=4, 22=5, 21=6, 20=7, 19=8
+        return 26 - number
+    # 26=0 , 25=1, 24=2, 23=3, 22=4, 21=5, 20=6, 19=7
 
     @staticmethod
     def generate_random_string(length: int) -> str:

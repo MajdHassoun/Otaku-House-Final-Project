@@ -37,7 +37,7 @@ class AddReviewTest(unittest.TestCase):
         self.home_page.click_random_home_page_item(item_number_home_page)
         self.item_page = ItemPage(self.driver)
         # Assert
-        self.assertTrue(self.item_page.is_item_reviews_displayed())
+        self.assertEqual(self.item_page.get_last_rating_user_name(), self.config["user_name"])
 
     def test_negative_add_review_ui(self):
         """ Negative test that adds a review without choosing a rating"""
