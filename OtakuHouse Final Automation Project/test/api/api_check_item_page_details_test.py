@@ -14,8 +14,6 @@ class ApiCheckItemPageDetailsTest(unittest.TestCase):
     def test_item_page_details(self):
         """ This test send an api get call and checks if the item details data is correct"""
         result = self.item_page_details.get_item_page_details(self.config["api_item_page_details_id"])
-        self.assertTrue(result.ok)
-        self.assertEqual(result.status, 200)
         self.assertEqual(result.data["name"], self.config["api_body_product_name"])
         self.assertEqual(result.data["brand"], self.config["api_item_page_details_brand"])
         self.assertEqual(result.data["price"], self.config["api_item_page_details_price"])

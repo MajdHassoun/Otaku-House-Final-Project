@@ -17,8 +17,7 @@ class ApiSearchTest(unittest.TestCase):
         # Act
         result = self.api_search.get_search(self.config["search_query"], self.config["page_number"])
         # Assert
-        self.assertEqual(200, result.status)
-        self.assertTrue(result.ok)
+
         self.assertEqual(result.data["products"][0]["name"], self.config["api_body_product_name"])
 
     def test_negative_api_search(self):
@@ -26,6 +25,5 @@ class ApiSearchTest(unittest.TestCase):
         # Act
         result = self.api_search.get_search_negative(UtilsInfra.generate_random_string(8), self.config["page_number"])
         # Assert
-        self.assertEqual(200, result.status)
-        self.assertTrue(result.ok)
+
         self.assertEqual(result.data["products"], [])

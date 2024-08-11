@@ -81,10 +81,12 @@ class HomePage(BasePage):
 
     def click_carrousel_next_button(self):
         """ Waits for the element to be clickable and clicks it"""
+        time.sleep(1)
         element = WebDriverWait(self._driver, 15).until(
             EC.visibility_of_element_located((By.XPATH, self.CARROUSEL_NEXT_BUTTON))
         )
         element.click()
+        time.sleep(1)
 
     def click_carrousel_dynamic_item(self):
         """ Waits for the element to be clickable and clicks it"""

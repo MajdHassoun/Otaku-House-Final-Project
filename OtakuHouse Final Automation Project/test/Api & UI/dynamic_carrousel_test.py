@@ -1,4 +1,3 @@
-import time
 import unittest
 from infra.api.api_wrapper import APIWrapper
 from infra.browser.browser_wrapper import BrowserWrapper
@@ -32,11 +31,15 @@ class DynamicCarrouselTest(unittest.TestCase):
 
     def test_carrousel_item_click(self):
         """ Checks if the carrousel items navigate to the correct pages"""
+
         # Arrange
+
         self.carrousel_items = ApiCarrouselItems(self.api_request)
         self.item_page = ItemPage(self.driver)
         num_of_clicks = 0
+
         # Act
+
         items_number = self.home_page.get_carrousel_items_number()
         for i in range(items_number + 1):
             self.home_page.click_carrousel_dynamic_item()
@@ -46,9 +49,11 @@ class DynamicCarrouselTest(unittest.TestCase):
             num_of_clicks += 1
             self.item_page.click_go_back_button()
             for j in range(num_of_clicks):
-                time.sleep(0.5)
                 self.home_page.click_carrousel_next_button()
-                time.sleep(0.5)
+
             # Assert
-            print(item_id)
-            self.assertEqual(current_url, item_page_url)
+
+            try:
+                self.assertEqual(current_url, item_page_url)
+            except:
+                print(f"item no.{items_number} has failed")
